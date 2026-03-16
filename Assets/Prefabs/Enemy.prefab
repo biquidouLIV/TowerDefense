@@ -28,15 +28,15 @@ RectTransform:
   m_GameObject: {fileID: 241980081424435674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3292467541801123897}
   m_Father: {fileID: 5604213269177144529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 338.39, y: 184.79}
+  m_AnchoredPosition: {x: 0.139, y: 1.153}
   m_SizeDelta: {x: 663, y: 373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2872813876854578424
@@ -207,15 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6dda6015c72e3438a69db3765c2507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  enemyDataList:
-  - {fileID: 11400000, guid: 5cc17704fc80e9e4e8f6fcfcfb4ab2bf, type: 2}
-  - {fileID: 11400000, guid: 5635c2465fb0dcd47938b4814bdb9e0a, type: 2}
-  _type: 0
-  _path:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  data: {fileID: 0}
   text: {fileID: 6080734172834432958}
 --- !u!1 &7394938965669265141
 GameObject:
