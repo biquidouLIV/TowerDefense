@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
   m_Name: Enemy2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  pv: 2
-  speed: 5
+  type: 1
+  pv: 5
+  speed: 1
   sprite: {fileID: 21300000, guid: 63b01167026ae784687c5d1b3487a98e, type: 3}
+  price: 50
+  difficulty: 2

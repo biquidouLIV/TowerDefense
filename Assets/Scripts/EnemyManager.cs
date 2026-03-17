@@ -1,8 +1,7 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Random = System.Random;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -15,6 +14,10 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private GameObject EnemySpawn;
+
+    private List<EnemyData> levelOneEnemyList = new List<EnemyData>();
+    private List<EnemyData> levelTwoEnemyList = new List<EnemyData>();
+    
     
     private void Awake()
     {
@@ -28,24 +31,73 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
-        if (Keyboard.current[Key.R].wasPressedThisFrame)
+        foreach (var enemy in enemyDataList)
         {
-            GameObject newEnemy = Instantiate(EnemyPrefab, EnemySpawn.transform.position, Quaternion.identity);
-            Enemy enemyData = newEnemy.GetComponent<Enemy>();
-            enemyData.data = enemyDataList[0];
+            switch (enemy.difficulty)
+            {
+                case(1):
+                    levelOneEnemyList.Add(enemy);
+                    break;
+                case(2):
+                    levelTwoEnemyList.Add(enemy);
+                    break;
+            }
         }
     }
+    
 
-    private void SpawnEnemy()
+    private Stack<EnemyData> GenerateWave(int _score, int _maxDifficulty)
     {
-        
+        Stack<EnemyData> wave = new Stack<EnemyData>();
+        while (_score >=0)
+        {
+            switch (_score)
+            {
+                case(>50):
+                    _score -= 4;
+                    break;
+                case(>25):
+                    _score -= 3;
+                    break;
+               case(>5):
+                   wave.Push(levelTwoEnemyList[Random.Range(0,levelTwoEnemyList.Count)]);
+                   _score -= 2;
+                   break; 
+                default:
+                    wave.Push(levelOneEnemyList[Random.Range(0,levelOneEnemyList.Count)]);
+                    _score -= 1;
+                    break;
+            }
+        }
+        return wave;
+    }
+
+    public void SpawnWave(int _score, int _maxDifficulty)
+    {
+        Stack<EnemyData> wave = GenerateWave(_score, _maxDifficulty);
+        StartCoroutine(SpawnEnemy(wave));
+    }
+
+    private IEnumerator SpawnEnemy(Stack<EnemyData> enemyList)
+    {
+        foreach (var enemy in enemyList)
+        {
+            yield return new WaitForSeconds(1.0f);
+            SpawnEnemy(enemy);
+        }
+    }
+    private void SpawnEnemy(EnemyData enemyToSpawn)
+    {
+        GameObject newEnemy = Instantiate(EnemyPrefab, EnemySpawn.transform.position, Quaternion.identity);
+        Enemy enemyData = newEnemy.GetComponent<Enemy>();
+        enemyData.data = enemyToSpawn;
     }
 }
 
 public enum EnemyType
 {
-    kanard = 0,
-    vache = 1
+    tungtungtungsahur = 0,
+    tralalerotralala = 1
 }

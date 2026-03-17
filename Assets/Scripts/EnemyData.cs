@@ -7,5 +7,10 @@ public class EnemyData : ScriptableObject
     public int pv;
     public float speed;
     public Sprite sprite;
-    
+    public int price;
+
+    public int difficulty;
+
+
+
 }

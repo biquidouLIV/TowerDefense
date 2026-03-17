@@ -3,7 +3,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TowerData", menuName = "Scriptable Objects/TowerData")]
 public class TowerData : ScriptableObject
 {
-    public float range;
+    public TowerType type;
+    public int price;
     public int damage;
+    public float range;
     public float fireDelay;
+
+    public int damageUpgradePrice;
+    public int rangeUpgradePrice;
+    public int fireDelayUpgradePrice;
 }

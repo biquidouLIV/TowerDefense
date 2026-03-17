@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Enemy : MonoBehaviour
     private Vector3 _direction;
     
     
-    [SerializeField] private TMP_Text text;
+    [SerializeField] private Image _lifeBar;
     
     
     void Start()
@@ -44,8 +45,6 @@ public class Enemy : MonoBehaviour
     
     void FixedUpdate()
     {
-        text.text = _pv.ToString();
-        
         
         transform.Translate(_direction * _speed / 50);
         
@@ -62,8 +61,6 @@ public class Enemy : MonoBehaviour
             _destinationIndex++;
 
         }
-        
-
     }
 
     public void TakeDamage(int damage)
@@ -74,10 +71,13 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+
+        _lifeBar.fillAmount = (float)_pv / data.pv;
     }
 
     private void Die()
     {
+        GameManager.instance.money += data.price;
         EnemyManager.instance.allEnemyList.Remove(this);
         Destroy(gameObject);
     }

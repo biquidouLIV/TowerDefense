@@ -16,3 +16,5 @@ MonoBehaviour:
   pv: 2
   speed: 1
   sprite: {fileID: 21300000, guid: 9785d5c1021492143aaff1309c684d4b, type: 3}
+  price: 20
+  difficulty: 1
