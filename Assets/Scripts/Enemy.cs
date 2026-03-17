@@ -38,8 +38,6 @@ public class Enemy : MonoBehaviour
         
 
         EnemyManager.instance.allEnemyList.Add(this);
-        
-        Debug.Log("spawn ennemi");
     }
     
     
@@ -66,18 +64,20 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _pv -= damage;
-        Debug.Log("aaaaaaaaa");
         if (_pv <= 0)
         {
-            Die();
+            Die(true);
         }
 
         _lifeBar.fillAmount = (float)_pv / data.pv;
     }
 
-    private void Die()
+    public void Die(bool giveMoney)
     {
-        GameManager.instance.money += data.price;
+        if (giveMoney)
+        {
+            GameManager.instance.money += data.price;
+        }
         EnemyManager.instance.allEnemyList.Remove(this);
         Destroy(gameObject);
     }

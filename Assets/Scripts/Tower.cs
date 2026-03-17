@@ -22,6 +22,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private float _fireDelay;
     [SerializeField] private int _value;
+    [SerializeField] private int _amoCost;
     
     private int _damageUpgradePrice;
     private int _rangeUpgradePrice;
@@ -53,6 +54,7 @@ public class Tower : MonoBehaviour
         _rangeUpgradePrice = _data.rangeUpgradePrice;
         _fireDelayUpgradePrice = _data.fireDelayUpgradePrice;
         _value = _data.price;
+        _amoCost = _data.amoCost;
     }
 
     public void ActiveUI()
@@ -153,6 +155,13 @@ public class Tower : MonoBehaviour
         {
             return;
         }
+
+        if (GameManager.instance.money <= 0)
+        {
+            return;
+        }
+
+        GameManager.instance.money -= _amoCost;
         _target.TakeDamage(_damage);
     }
 

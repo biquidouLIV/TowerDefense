@@ -15,6 +15,8 @@ MonoBehaviour:
   type: 0
   pv: 2
   speed: 1
-  sprite: {fileID: 21300000, guid: 9785d5c1021492143aaff1309c684d4b, type: 3}
+  sprite: {fileID: 21300000, guid: a94a405a2fb14504b838ac9fb63ec25a, type: 3}
   price: 20
   difficulty: 1
+  income: 10
+  escape: 0.7

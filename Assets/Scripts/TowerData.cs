@@ -8,6 +8,8 @@ public class TowerData : ScriptableObject
     public int damage;
     public float range;
     public float fireDelay;
+    public int amoCost;
+    
 
     public int damageUpgradePrice;
     public int rangeUpgradePrice;

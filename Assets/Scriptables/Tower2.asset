@@ -17,6 +17,7 @@ MonoBehaviour:
   damage: 3
   range: 2
   fireDelay: 1
+  amoCost: 2
   damageUpgradePrice: 50
   rangeUpgradePrice: 50
   fireDelayUpgradePrice: 50
