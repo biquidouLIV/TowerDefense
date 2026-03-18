@@ -20,8 +20,8 @@ public class Clicker : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GiveClick());
-        upgrade1Text.text = upgrade1Price.ToString();
-        upgrade2Text.text = upgrade2Price.ToString();
+        upgrade1Text.text = upgrade1Price + "€";
+        upgrade2Text.text = upgrade2Price + "€";
 
     }
 
@@ -49,7 +49,7 @@ public class Clicker : MonoBehaviour
         
         clickerGain += 1;
         upgrade1Price = (int)(upgrade1Price * 1.5 * 1.5);
-        upgrade1Text.text = upgrade1Price.ToString();
+        upgrade1Text.text = upgrade1Price + "€";
         
     }
 
@@ -64,6 +64,6 @@ public class Clicker : MonoBehaviour
         
         clickPerSec += 1;
         upgrade2Price = (int)(upgrade2Price * 1.5 * 1.5);
-        upgrade2Text.text = upgrade2Price.ToString();
+        upgrade2Text.text = upgrade2Price + "€";
     }
 }
