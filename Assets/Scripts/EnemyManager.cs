@@ -17,7 +17,10 @@ public class EnemyManager : MonoBehaviour
 
     private List<EnemyData> levelOneEnemyList = new List<EnemyData>();
     private List<EnemyData> levelTwoEnemyList = new List<EnemyData>();
-    
+    private List<EnemyData> levelThreeEnemyList = new List<EnemyData>();
+    private List<EnemyData> levelFourEnemyList = new List<EnemyData>();
+
+    [SerializeField] private float timeBetweenEnemies = 1.5f;
     
     private void Awake()
     {
@@ -56,9 +59,11 @@ public class EnemyManager : MonoBehaviour
             switch (_score)
             {
                 case(>50):
+                    wave.Push(levelFourEnemyList[Random.Range(0,levelFourEnemyList.Count)]);
                     _score -= 4;
                     break;
                 case(>25):
+                    wave.Push(levelThreeEnemyList[Random.Range(0,levelThreeEnemyList.Count)]);
                     _score -= 3;
                     break;
                case(>5):
@@ -84,7 +89,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (var enemy in enemyList)
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(timeBetweenEnemies);
             SpawnEnemy(enemy);
         }
 

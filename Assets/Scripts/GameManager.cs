@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         [SerializeField] private int life = 20;
         
         [SerializeField] private TMP_Text moneyText;
+        [SerializeField] private TMP_Text lifeText;
         [SerializeField] private float _timeBetweenWaves = 5f;
         [SerializeField] private int stealPrize = 300;
         private int _currentWave = 0;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
                 
                 
                 moneyText.text = money + "€";
+                lifeText.text = life.ToString();
 
                 if (Keyboard.current[Key.Escape].wasPressedThisFrame)
                 {
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
                 foreach (var ally in Allies)
                 {
                         money += ally.income;
+                        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
                         if (Random.Range(0f, 1f) < ally.escape)
                         {
                                 escapes.Add(ally);
@@ -132,6 +135,7 @@ public class GameManager : MonoBehaviour
                 {
                         gameOverScreen.SetActive(true);
                 }
+                SoundManager.instance.RequestPlaySound(SoundManager.instance.baseDamageSound);
         }
 
         public void Pause()

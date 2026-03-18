@@ -21,3 +21,4 @@ MonoBehaviour:
   damageUpgradePrice: 50
   rangeUpgradePrice: 50
   fireDelayUpgradePrice: 50
+  sprite: {fileID: 21300000, guid: 4f0dbbd05b0483b46b7a7617de879910, type: 3}

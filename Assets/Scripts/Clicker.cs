@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Clicker : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class Clicker : MonoBehaviour
 
     private IEnumerator GiveClick()
     {
+        if (clickPerSec != 0)
+        {
+            SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
+        }
+        
         GameManager.instance.money += clickPerSec;
         yield return new WaitForSeconds(1);
         StartCoroutine(GiveClick());
@@ -35,7 +41,7 @@ public class Clicker : MonoBehaviour
     public void OnClick()
     {
         GameManager.instance.money += clickerGain;
-        
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
     }
 
     public void Upgrade1()
@@ -50,6 +56,7 @@ public class Clicker : MonoBehaviour
         clickerGain += 1;
         upgrade1Price = (int)(upgrade1Price * 1.5 * 1.5);
         upgrade1Text.text = upgrade1Price + "€";
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
         
     }
 
@@ -65,5 +72,6 @@ public class Clicker : MonoBehaviour
         clickPerSec += 1;
         upgrade2Price = (int)(upgrade2Price * 1.5 * 1.5);
         upgrade2Text.text = upgrade2Price + "€";
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
 }

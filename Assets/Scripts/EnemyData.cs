@@ -15,5 +15,7 @@ public class EnemyData : ScriptableObject
     public int income;
     public float escape;
 
+    public AudioClip spawnSound;
+
 
 }

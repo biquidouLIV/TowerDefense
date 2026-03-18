@@ -1,6 +1,10 @@
 using System;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class Tower : MonoBehaviour
 {
@@ -27,6 +31,8 @@ public class Tower : MonoBehaviour
     private int _damageUpgradePrice;
     private int _rangeUpgradePrice;
     private int _fireDelayUpgradePrice;
+
+    [SerializeField] private SpriteRenderer _skin;
 
     
     
@@ -55,6 +61,9 @@ public class Tower : MonoBehaviour
         _fireDelayUpgradePrice = _data.fireDelayUpgradePrice;
         _value = _data.price;
         _amoCost = _data.amoCost;
+        _skin.sprite = _data.sprite;
+        
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
 
     public void ActiveUI()
@@ -94,6 +103,7 @@ public class Tower : MonoBehaviour
         GameManager.instance.money -= _rangeUpgradePrice;
         
         _range += _rangeToAdd;
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
     public void UpgradeDamage(int _damageToAdd)
     {
@@ -106,6 +116,7 @@ public class Tower : MonoBehaviour
         _value += _damageUpgradePrice;
         GameManager.instance.money -= _damageUpgradePrice;
         _damage += _damageToAdd;
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
     public void UpgradeFireDelay(float _fireDelayReduction)
     {
@@ -117,6 +128,7 @@ public class Tower : MonoBehaviour
         _value += _fireDelayUpgradePrice;
         GameManager.instance.money -= _fireDelayUpgradePrice;
         _fireDelay *= _fireDelayReduction;
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
 
     public void SellTower()
@@ -124,6 +136,7 @@ public class Tower : MonoBehaviour
         GameManager.instance.money += _value;
         PlaceTower(0);
         UpgradeTowerUI.SetActive(false);
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
     
     private void Update()
@@ -134,6 +147,22 @@ public class Tower : MonoBehaviour
             Shoot();
             lastShotTime = Time.time;
         }
+
+        
+        
+        if (_target != null)
+        {
+            Vector3 direction = _target.transform.position - transform.position;
+            
+            
+            float angle = Mathf.Acos(Vector3.Dot(Vector3.up, direction)/direction.magnitude*Vector3.up.magnitude);
+            angle = (angle * 180 / Mathf.PI + 270) + 90;
+            
+            _skin.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+        }
+        
+        
+        
     }
 
     private void FindTarget()
@@ -161,6 +190,7 @@ public class Tower : MonoBehaviour
             return;
         }
 
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
         GameManager.instance.money -= _amoCost;
         _target.TakeDamage(_damage);
     }

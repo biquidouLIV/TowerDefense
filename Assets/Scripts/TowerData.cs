@@ -14,4 +14,6 @@ public class TowerData : ScriptableObject
     public int damageUpgradePrice;
     public int rangeUpgradePrice;
     public int fireDelayUpgradePrice;
+
+    public Sprite sprite;
 }

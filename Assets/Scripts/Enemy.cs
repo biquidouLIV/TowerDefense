@@ -40,6 +40,12 @@ public class Enemy : MonoBehaviour
         
 
         EnemyManager.instance.allEnemyList.Add(this);
+
+        if (data.spawnSound != null)
+        {
+            SoundManager.instance.RequestPlaySound(data.spawnSound);
+        }
+        
     }
     
     
