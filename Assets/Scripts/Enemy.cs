@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     
     private int _pv;
     private float _speed;
+    private int _damage;
     
     
     private Vector3 _destination;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
         data = EnemyManager.instance.enemyDataList[(int)data.type];
         _pv = data.pv;
         _speed = data.speed;
+        _damage = data.damage;
         
         if (data.sprite != null)
         {
@@ -51,8 +53,9 @@ public class Enemy : MonoBehaviour
             if (_destinationIndex >= EnemyManager.instance.path.Length-1)
             {
                 _direction = Vector3.zero;
+                GameManager.instance.baseTakeDamage(_damage);
+                Die(false);
                 return;
-
             }
             _direction = (EnemyManager.instance.path[_destinationIndex + 1].position - EnemyManager.instance.path[_destinationIndex].position).normalized;
             _destination = EnemyManager.instance.path[_destinationIndex + 1].position;

@@ -6,10 +6,12 @@ public class EnemyData : ScriptableObject
     public EnemyType type;
     public int pv;
     public float speed;
+    public int damage;
     public Sprite sprite;
     public int price;
     public int difficulty;
 
+    
     public int income;
     public float escape;
 

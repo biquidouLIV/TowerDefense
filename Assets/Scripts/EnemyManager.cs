@@ -87,6 +87,8 @@ public class EnemyManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             SpawnEnemy(enemy);
         }
+
+        GameManager.instance.waveIsSpawning = false;
     }
     private void SpawnEnemy(EnemyData enemyToSpawn)
     {
@@ -98,6 +100,7 @@ public class EnemyManager : MonoBehaviour
 
 public enum EnemyType
 {
-    tungtungtungsahur = 0,
-    tralalerotralala = 1
+    tungTungTungSahur = 0,
+    tralaleroTralala = 1,
+    brrBrrBicusDicusBombicus = 2
 }
