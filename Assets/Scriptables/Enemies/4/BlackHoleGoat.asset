@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: LiriliLarila
+  m_Name: BlackHoleGoat
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 4
-  pv: 1000
+  type: 13
+  pv: 420
   speed: 1
   damage: 4
-  price: 100
+  price: 150
   difficulty: 4
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: 8a797b36d1ce0a945b99d8fc4d84c30f, type: 3}
-  spawnSound: {fileID: 8300000, guid: 03da1561730fd3d4bb850cb02c9b0a81, type: 3}
+  stealPrice: 600
+  income: 350
+  escape: 0.5
+  sprite: {fileID: 21300000, guid: 272f8dc6cde65994689d5566f00e2995, type: 3}
+  spawnSound: {fileID: 8300000, guid: 8af3074c4970d914fa392ff2f2048610, type: 3}

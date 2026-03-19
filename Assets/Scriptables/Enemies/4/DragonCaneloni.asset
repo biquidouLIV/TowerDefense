@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: FrigoCamelo
+  m_Name: DragonCaneloni
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 5
-  pv: 600
+  type: 12
+  pv: 450
   speed: 1
-  damage: 3
-  price: 50
-  difficulty: 3
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: 3286a05593fb53e48aa5004c37bc1273, type: 3}
-  spawnSound: {fileID: 8300000, guid: d5cb53de95f0b984d89be29f29f57831, type: 3}
+  damage: 4
+  price: 150
+  difficulty: 4
+  stealPrice: 600
+  income: 350
+  escape: 0.5
+  sprite: {fileID: 21300000, guid: 45703e454e21dba43900a678208be9fc, type: 3}
+  spawnSound: {fileID: 8300000, guid: ef4dfa92a5e57e24d93561ce25dc67fa, type: 3}

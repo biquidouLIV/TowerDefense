@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: LaVacaSaturnoSaturnita
+  m_Name: ChimpanziniBananini
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 3
-  pv: 1000
+  type: 6
+  pv: 300
   speed: 1
-  damage: 4
-  price: 100
-  difficulty: 4
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: 83c0650141263574a8eb2c6e471aa90c, type: 3}
-  spawnSound: {fileID: 8300000, guid: 59ea8a331c007bb4695bfb154eda23b1, type: 3}
+  damage: 3
+  price: 50
+  difficulty: 3
+  stealPrice: 500
+  income: 150
+  escape: 0.3
+  sprite: {fileID: 21300000, guid: 5829ce070d95afa46bbe95f24f2d1334, type: 3}
+  spawnSound: {fileID: 8300000, guid: 0962a9461eb804948a366c24112d8ebf, type: 3}

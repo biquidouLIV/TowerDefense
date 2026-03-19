@@ -15,10 +15,14 @@ MonoBehaviour:
   type: 1
   price: 100
   damage: 5
+  maxDamage: 20
   range: 3
+  maxRange: 5
   fireDelay: 0.5
+  minFireDelay: 0.25
   amoCost: 1
   sprite: {fileID: 21300000, guid: 4f0dbbd05b0483b46b7a7617de879910, type: 3}
+  bullet: {fileID: 82934230960926980, guid: 1cc91e06d15d85e47b31d645d47a8edf, type: 3}
   damageUpgradePrice: 50
   rangeUpgradePrice: 30
   fireDelayUpgradePrice: 60

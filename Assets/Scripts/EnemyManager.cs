@@ -64,11 +64,11 @@ public class EnemyManager : MonoBehaviour
         {
             switch (_score)
             {
-                case(>50):
+                case(>40):
                     wave.Push(levelFourEnemyList[Random.Range(0,levelFourEnemyList.Count)]);
                     _score -= 4;
                     break;
-                case(>25):
+                case(>20):
                     wave.Push(levelThreeEnemyList[Random.Range(0,levelThreeEnemyList.Count)]);
                     _score -= 3;
                     break;
@@ -111,12 +111,19 @@ public class EnemyManager : MonoBehaviour
 
 public enum EnemyType
 {
-    tungTungTungSahur = 0,
-    tralaleroTralala = 1,
-    brrBrrBicusDicusBombicus = 2,
-    laVacaSaturnoSaturnita = 3,
-    liriliLarila = 4,
-    frigoCamelo = 5,
-    chimpanziniBananini = 6,
-    cappucinoAssassino = 7,
+    tungTungTungSahur,
+    tralaleroTralala,
+    brrBrrBicusDicusBombicus,
+    laVacaSaturnoSaturnita,
+    liriliLarila,
+    frigoCamelo,
+    chimpanziniBananini,
+    cappucinoAssassino,
+    sixSeven,
+    matteo,
+    odinDinDinDinDun,
+    trippiTroppiTroppaTrippa,
+    dragonCaneloni,
+    blackHoleGoat,
+    
 }

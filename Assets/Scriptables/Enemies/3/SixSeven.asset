@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: TralaleroTralala
+  m_Name: SixSeven
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 1
-  pv: 60
+  type: 8
+  pv: 300
   speed: 1
-  damage: 2
-  price: 20
-  difficulty: 2
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: d1d3f7656caf7be449991fcf3fac232e, type: 3}
-  spawnSound: {fileID: 8300000, guid: 80f856c18a35373468ba743395887d14, type: 3}
+  damage: 3
+  price: 67
+  difficulty: 3
+  stealPrice: 500
+  income: 150
+  escape: 0.3
+  sprite: {fileID: 21300000, guid: 84947c96f122d8c45bf4e43b3790c038, type: 3}
+  spawnSound: {fileID: 8300000, guid: eb10c28398ff4a840a2949a68eda401b, type: 3}

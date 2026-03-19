@@ -43,12 +43,7 @@ public class Clicker : MonoBehaviour
     {
         GameManager.instance.money += clickerGain;
         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
-
-        /*
-        GameObject kk = Instantiate(particles);
-        TMP_Text text = kk.GetComponentInChildren<TMP_Text>();
-        text.text = "+ " + clickerGain;
-        */
+        
     }
 
     public void Upgrade1()
@@ -62,7 +57,7 @@ public class Clicker : MonoBehaviour
         
         clickerGain += 1;
         upgrade1Price = (int)(upgrade1Price * 1.5 * 1.5);
-        upgrade1Text.text = upgrade1Price + "€";
+        upgrade1Text.text = "+1/click "+upgrade1Price + "€";
         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
         
     }
@@ -78,7 +73,7 @@ public class Clicker : MonoBehaviour
         
         clickPerSec += 1;
         upgrade2Price = (int)(upgrade2Price * 1.5 * 1.5);
-        upgrade2Text.text = upgrade2Price + "€";
+        upgrade2Text.text = "+1/s "+upgrade2Price + "€";
         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
 }

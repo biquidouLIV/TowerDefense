@@ -150,10 +150,11 @@ public class GameManager : MonoBehaviour
                 if (life <= 0)
                 {
                         gameOverScreen.SetActive(true);
-                        SoundManager.instance.RequestPlaySound(SoundManager.instance.endMusic);
+                        SoundManager.instance.EndMusic();
+                        waveIsSpawning = true;
                 }
                 
-                SoundManager.instance.RequestPlaySound(SoundManager.instance.baseDamageSound);
+                SoundManager.instance.RequestPlaySound(SoundManager.instance.baseDamageSound[Random.Range(0,SoundManager.instance.baseDamageSound.Length)]);
         }
 
         public void Pause()

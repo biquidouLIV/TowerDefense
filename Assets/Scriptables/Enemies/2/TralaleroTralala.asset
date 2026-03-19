@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: CappucinoAssassino
+  m_Name: TralaleroTralala
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 7
-  pv: 70
+  type: 1
+  pv: 60
   speed: 1
   damage: 2
-  price: 25
+  price: 20
   difficulty: 2
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: 9e30d24b5117c2742818dcc9c8983560, type: 3}
-  spawnSound: {fileID: 8300000, guid: 58aae4dbd1c61344194ef073663c0c45, type: 3}
+  stealPrice: 300
+  income: 75
+  escape: 0.25
+  sprite: {fileID: 21300000, guid: d1d3f7656caf7be449991fcf3fac232e, type: 3}
+  spawnSound: {fileID: 8300000, guid: 80f856c18a35373468ba743395887d14, type: 3}

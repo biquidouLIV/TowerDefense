@@ -27,16 +27,14 @@ public class Tower : MonoBehaviour
     [SerializeField] private TMP_Text sellValue;
     
     [SerializeField] private SpriteRenderer _skin;
-    [SerializeField] private GameObject bulletPrefab;
-    
-    
-    
-    //retirer serialize
-    [SerializeField] private float _range;
-    [SerializeField] private int _damage;
-    [SerializeField] private float _fireDelay;
-    [SerializeField] private int _value;
-    [SerializeField] private int _amoCost;
+     private GameObject bulletPrefab;
+
+
+     private float _range; 
+     private int _damage;
+     private float _fireDelay;
+     private int _value; 
+     private int _amoCost;
     
     private int _damageUpgradePrice;
     private int _rangeUpgradePrice;
@@ -93,9 +91,14 @@ public class Tower : MonoBehaviour
         rangeUpgradeText.text = "range "+_rangeUpgradePrice + "€";
         fireDelayUpgradeText.text = "fireDelay "+_fireDelayUpgradePrice + "€";
         sellValue.text = "sell " +_value + "€";
+
+        bulletPrefab = _data.bullet;
+
+        if (_data.type != TowerType.empty)
+        {
+            SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
+        }
         
-        
-        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
     }
 
     public void ActiveUI()
@@ -126,38 +129,63 @@ public class Tower : MonoBehaviour
 
     public void UpgradeRange()
     {
+        bool isMaxed = false;
         if (GameManager.instance.money < _rangeUpgradePrice)
         {
             return;
         }
 
+        if (isMaxed)
+        {
+            return;
+        }
+        
         _value += _rangeUpgradePrice;
         GameManager.instance.money -= _rangeUpgradePrice;
         
         _range += _rangeUpgrade;
-        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
 
         _rangeUpgradePrice += _rangeUpgradeAugmentation;
         rangeUpgradeText.text = "range "+_rangeUpgradePrice + "€";
         sellValue.text = "sell " +_value + "€";
 
+        if (_range >= _data.maxRange)
+        {
+            isMaxed = true;
+            rangeUpgradeText.text = "Max.";
+        }
     }
     public void UpgradeDamage()
     {
+        bool isMaxed = false;
+        
         if (GameManager.instance.money < _damageUpgradePrice)
         {
             return;
         }
 
+        if (isMaxed)
+        {
+            return;
+        }
         
         _value += _damageUpgradePrice;
         GameManager.instance.money -= _damageUpgradePrice;
         _damage += _damageUpgrade;
-        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
 
         _damageUpgradePrice += _damageUpgradeAugmentation;
         damageUpgradeText.text = "damage "+_damageUpgradePrice + "€";
         sellValue.text = "sell " +_value +"€";
+        
+        if (_damage >= _data.maxDamage)
+        {
+            isMaxed = true;
+            damageUpgradeText.text = "Max.";
+        }
+        
+        
 
     }
     public void UpgradeFireDelay()
@@ -177,13 +205,13 @@ public class Tower : MonoBehaviour
         _value += _fireDelayUpgradePrice;
         GameManager.instance.money -= _fireDelayUpgradePrice;
         _fireDelay -= _fireDelayUpgrade;
-        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
 
         _fireDelayUpgradePrice += _fireDelayUpgradeAugmentation;
         fireDelayUpgradeText.text = "fireDelay "+_fireDelayUpgradePrice+"€";
         sellValue.text = "sell " +_value +"€";
         
-        if (_fireDelay <= _fireDelayUpgrade)
+        if (_fireDelay <= _data.minFireDelay)
         {
             isMaxed = true;
             fireDelayUpgradeText.text = "Max.";
@@ -196,7 +224,7 @@ public class Tower : MonoBehaviour
         GameManager.instance.money += _value;
         PlaceTower(0);
         UpgradeTowerUI.SetActive(false);
-        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
     }
     
     private void Update()
@@ -254,11 +282,10 @@ public class Tower : MonoBehaviour
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.target = _target;
         bulletScript.damage = _damage;
-        
-        
-        SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
+
+
+        SoundManager.instance.RequestPlaySound(SoundManager.instance.shootSound,0.1f);
         GameManager.instance.money -= _amoCost;
-        //_target.TakeDamage(_damage);
     }
 
     private void OnDrawGizmos()
@@ -270,8 +297,8 @@ public class Tower : MonoBehaviour
 public enum TowerType
 {
     empty,
-    Tower1,
-    Tower2,
-    Tower3
+    normal,
+    sniper,
+    rapide,
     
 }

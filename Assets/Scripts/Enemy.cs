@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         data = EnemyManager.instance.enemyDataList[(int)data.type];
-        _pv = data.pv + (int)(0.1 * GameManager.instance._currentWave * data.pv);
+        _pv = data.pv + (int)(0.2 * GameManager.instance._currentWave * data.pv);
         _maxPv = _pv;
         _speed = data.speed;
         _damage = data.damage;

@@ -13,18 +13,22 @@ MonoBehaviour:
   m_Name: Tower3
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   type: 3
-  price: 0
-  damage: 0
-  range: 0
-  fireDelay: 0
-  amoCost: 0
-  sprite: {fileID: 0}
-  damageUpgradePrice: 0
-  rangeUpgradePrice: 0
-  fireDelayUpgradePrice: 0
-  damageUpgradeAugmentation: 0
-  rangeUpgradeAugmentation: 0
-  fireDelayUpgradeAugmentation: 0
-  damageUpgrade: 0
-  rangeUpgrade: 0
-  fireDelayUpgrade: 0
+  price: 500
+  damage: 2
+  maxDamage: 8
+  range: 4
+  maxRange: 6
+  fireDelay: 0.15
+  minFireDelay: 0.1
+  amoCost: 1
+  sprite: {fileID: 21300000, guid: 1a7c3c36cd073e6449409fdedb215df6, type: 3}
+  bullet: {fileID: 82934230960926980, guid: 1cc91e06d15d85e47b31d645d47a8edf, type: 3}
+  damageUpgradePrice: 100
+  rangeUpgradePrice: 80
+  fireDelayUpgradePrice: 150
+  damageUpgradeAugmentation: 120
+  rangeUpgradeAugmentation: 80
+  fireDelayUpgradeAugmentation: 150
+  damageUpgrade: 1
+  rangeUpgrade: 0.5
+  fireDelayUpgrade: 0.01

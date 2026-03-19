@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: ChimpanziniBananini
+  m_Name: OdinDinDinDinDun
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 6
-  pv: 600
+  type: 10
+  pv: 25
   speed: 1
-  damage: 3
-  price: 50
-  difficulty: 3
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: 5829ce070d95afa46bbe95f24f2d1334, type: 3}
-  spawnSound: {fileID: 8300000, guid: 0962a9461eb804948a366c24112d8ebf, type: 3}
+  damage: 1
+  price: 10
+  difficulty: 1
+  stealPrice: 200
+  income: 40
+  escape: 0.2
+  sprite: {fileID: 21300000, guid: 0a14fc4bfe29d5d409925126675fc389, type: 3}
+  spawnSound: {fileID: 8300000, guid: d23e767cc465b0e45b35c3b1c64d10e5, type: 3}

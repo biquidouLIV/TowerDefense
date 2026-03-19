@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: TungTungTungSahur
+  m_Name: CappucinoAssassino
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 0
-  pv: 25
+  type: 7
+  pv: 70
   speed: 1
-  damage: 1
-  price: 10
-  difficulty: 1
-  stealPrice: 20
-  income: 20
-  escape: 0.4
-  sprite: {fileID: 21300000, guid: a94a405a2fb14504b838ac9fb63ec25a, type: 3}
-  spawnSound: {fileID: 8300000, guid: 2e56c6b24731a5945b741e9231c8d67d, type: 3}
+  damage: 2
+  price: 25
+  difficulty: 2
+  stealPrice: 300
+  income: 75
+  escape: 0.25
+  sprite: {fileID: 21300000, guid: 9e30d24b5117c2742818dcc9c8983560, type: 3}
+  spawnSound: {fileID: 8300000, guid: 58aae4dbd1c61344194ef073663c0c45, type: 3}

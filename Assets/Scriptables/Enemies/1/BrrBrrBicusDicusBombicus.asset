@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
+  m_Name: BrrBrrBicusDicusBombicus
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  type: 2
+  pv: 30
+  speed: 1
+  damage: 1
+  price: 10
+  difficulty: 1
+  stealPrice: 200
+  income: 40
+  escape: 0.2
+  sprite: {fileID: 21300000, guid: 4f46faae2c0a675468852afd8815bd6e, type: 3}
+  spawnSound: {fileID: 8300000, guid: 42aa075a8ef045841a3f69e771795168, type: 3}

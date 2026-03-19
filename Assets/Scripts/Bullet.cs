@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     
     public Enemy target;
     public int damage;
+    
     [SerializeField] private float speed = 0.01f;
     [SerializeField] private float hitDistance = 0.15f;
     private Vector3 direction;
