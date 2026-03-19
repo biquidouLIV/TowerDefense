@@ -46,12 +46,18 @@ public class EnemyManager : MonoBehaviour
                 case(2):
                     levelTwoEnemyList.Add(enemy);
                     break;
+                case(3):
+                    levelThreeEnemyList.Add(enemy);
+                    break;
+                case(4):
+                    levelFourEnemyList.Add(enemy);
+                    break;
             }
         }
     }
     
 
-    private Stack<EnemyData> GenerateWave(int _score, int _maxDifficulty)
+    private Stack<EnemyData> GenerateWave(int _score)
     {
         Stack<EnemyData> wave = new Stack<EnemyData>();
         while (_score >=0)
@@ -79,9 +85,9 @@ public class EnemyManager : MonoBehaviour
         return wave;
     }
 
-    public void SpawnWave(int _score, int _maxDifficulty)
+    public void SpawnWave(int _score)
     {
-        Stack<EnemyData> wave = GenerateWave(_score, _maxDifficulty);
+        Stack<EnemyData> wave = GenerateWave(_score);
         StartCoroutine(SpawnEnemy(wave));
     }
 
@@ -107,5 +113,10 @@ public enum EnemyType
 {
     tungTungTungSahur = 0,
     tralaleroTralala = 1,
-    brrBrrBicusDicusBombicus = 2
+    brrBrrBicusDicusBombicus = 2,
+    laVacaSaturnoSaturnita = 3,
+    liriliLarila = 4,
+    frigoCamelo = 5,
+    chimpanziniBananini = 6,
+    cappucinoAssassino = 7,
 }

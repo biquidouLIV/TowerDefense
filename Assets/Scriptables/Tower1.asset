@@ -14,11 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   type: 1
   price: 100
-  damage: 1
+  damage: 5
   range: 3
-  fireDelay: 1
+  fireDelay: 0.5
   amoCost: 1
-  damageUpgradePrice: 50
-  rangeUpgradePrice: 50
-  fireDelayUpgradePrice: 50
   sprite: {fileID: 21300000, guid: 4f0dbbd05b0483b46b7a7617de879910, type: 3}
+  damageUpgradePrice: 50
+  rangeUpgradePrice: 30
+  fireDelayUpgradePrice: 60
+  damageUpgradeAugmentation: 30
+  rangeUpgradeAugmentation: 20
+  fireDelayUpgradeAugmentation: 40
+  damageUpgrade: 3
+  rangeUpgrade: 0.3
+  fireDelayUpgrade: 0.05

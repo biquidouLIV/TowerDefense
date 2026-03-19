@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     private int _pv;
     private float _speed;
     private int _damage;
-    
+
+    private int _maxPv;
     
     private Vector3 _destination;
     private int _destinationIndex = 0;
@@ -24,7 +25,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         data = EnemyManager.instance.enemyDataList[(int)data.type];
-        _pv = data.pv;
+        _pv = data.pv + (int)(0.1 * GameManager.instance._currentWave * data.pv);
+        _maxPv = _pv;
         _speed = data.speed;
         _damage = data.damage;
         
@@ -81,7 +83,7 @@ public class Enemy : MonoBehaviour
             Die(true);
         }
 
-        _lifeBar.fillAmount = (float)_pv / data.pv;
+        _lifeBar.fillAmount = ((float)_pv / (float)_maxPv);
     }
 
     public void Die(bool giveMoney)

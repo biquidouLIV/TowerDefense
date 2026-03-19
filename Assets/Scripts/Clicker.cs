@@ -15,20 +15,21 @@ public class Clicker : MonoBehaviour
 
     [SerializeField] TMP_Text upgrade1Text;
     [SerializeField] TMP_Text upgrade2Text;
-    
 
+    [SerializeField] private GameObject particles;
+    
 
     private void Start()
     {
         StartCoroutine(GiveClick());
-        upgrade1Text.text = upgrade1Price + "€";
-        upgrade2Text.text = upgrade2Price + "€";
+        upgrade1Text.text = "+1/click "+ upgrade1Price + "€";
+        upgrade2Text.text = "+1/s " + upgrade2Price + "€";
 
     }
 
     private IEnumerator GiveClick()
     {
-        if (clickPerSec != 0)
+        if (clickPerSec != 0 && !GameManager.instance.gameOverScreen.activeSelf)
         {
             SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
         }
@@ -42,6 +43,12 @@ public class Clicker : MonoBehaviour
     {
         GameManager.instance.money += clickerGain;
         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
+
+        /*
+        GameObject kk = Instantiate(particles);
+        TMP_Text text = kk.GetComponentInChildren<TMP_Text>();
+        text.text = "+ " + clickerGain;
+        */
     }
 
     public void Upgrade1()

@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioClip baseDamageSound;
 
     [SerializeField] private AudioClip[] musics;
+    [SerializeField] public AudioClip endMusic;
     
     private void Awake()
     {

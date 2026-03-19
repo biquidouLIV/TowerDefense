@@ -16,10 +16,13 @@ public class GameManager : MonoBehaviour
         
         [SerializeField] private TMP_Text moneyText;
         [SerializeField] private TMP_Text lifeText;
+        [SerializeField] private TMP_Text waveText;
+        [SerializeField] private TMP_Text stealText;
+        
         [SerializeField] private float _timeBetweenWaves = 5f;
-        [SerializeField] private int stealPrize = 300;
-        private int _currentWave = 0;
-        private int _waveScore = 8;
+        [SerializeField] private int stealPrize;
+        public int _currentWave = 0;
+        private int _waveScore = 5;
 
         [SerializeField] private List<EnemyData> Allies = new List<EnemyData>();
         [SerializeField] private Image[] AlliesImage = new Image[4];
@@ -27,8 +30,9 @@ public class GameManager : MonoBehaviour
         private bool _currentlyInWave = false;
         public bool waveIsSpawning = false;
 
-        [SerializeField] private GameObject gameOverScreen;
+        [SerializeField] public GameObject gameOverScreen;
         [SerializeField] private GameObject pauseUI;
+
         
         
         private void Update()
@@ -46,6 +50,18 @@ public class GameManager : MonoBehaviour
                 
                 moneyText.text = money + "€";
                 lifeText.text = life.ToString();
+                waveText.text = "wave " + _currentWave;
+
+                if (EnemyManager.instance.allEnemyList.Count != 0)
+                {
+                      stealPrize = EnemyManager.instance.allEnemyList[0].data.stealPrice;
+                      stealText.text = "steal a Brainrot " + stealPrize + "€";  
+                }
+                else
+                {
+                        stealText.text = "no Brainrot to steal";  
+                }
+
 
                 if (Keyboard.current[Key.Escape].wasPressedThisFrame)
                 {
@@ -58,9 +74,9 @@ public class GameManager : MonoBehaviour
                _currentlyInWave = true;
                AlliesIncome();
                yield return new WaitForSeconds(_timeBetweenWaves);
-               EnemyManager.instance.SpawnWave(_waveScore,4);
+               EnemyManager.instance.SpawnWave(_waveScore);
                _currentWave++;
-               _waveScore = 8 + 3 * _currentWave;
+               _waveScore = 5 + 5 * _currentWave;
         }
 
 
@@ -75,7 +91,7 @@ public class GameManager : MonoBehaviour
                 {
                         return;
                 }
-
+                
                 money -= stealPrize;
                 Allies.Add(EnemyManager.instance.allEnemyList[0].data);
                 EnemyManager.instance.allEnemyList[0].Die(false);
@@ -134,7 +150,9 @@ public class GameManager : MonoBehaviour
                 if (life <= 0)
                 {
                         gameOverScreen.SetActive(true);
+                        SoundManager.instance.RequestPlaySound(SoundManager.instance.endMusic);
                 }
+                
                 SoundManager.instance.RequestPlaySound(SoundManager.instance.baseDamageSound);
         }
 

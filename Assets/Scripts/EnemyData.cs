@@ -3,19 +3,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects/EnemyData")]
 public class EnemyData : ScriptableObject
 {
-    public EnemyType type;
-    public int pv;
-    public float speed;
-    public int damage;
-    public Sprite sprite;
-    public int price;
-    public int difficulty;
+    [Header("data")]
+        public EnemyType type;
+        public int pv;
+        public float speed;
+        public int damage;
+        public int price;
+        public int difficulty;
 
-    
-    public int income;
-    public float escape;
-
-    public AudioClip spawnSound;
+        [Header("steal data")] 
+        public int stealPrice;
+        public int income;
+        public float escape;
+    [Header("refs")]
+        public Sprite sprite;
+        public AudioClip spawnSound;
 
 
 }

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a43154ece96c094aacd4929678f88f3, type: 3}
-  m_Name: BrrBrrBicusDicusBombicus
+  m_Name: LaVacaSaturnoSaturnita
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  type: 2
-  pv: 30
+  type: 3
+  pv: 1000
   speed: 1
-  damage: 1
-  price: 10
-  difficulty: 1
+  damage: 4
+  price: 100
+  difficulty: 4
   stealPrice: 20
   income: 20
   escape: 0.4
-  sprite: {fileID: 21300000, guid: 4f46faae2c0a675468852afd8815bd6e, type: 3}
-  spawnSound: {fileID: 8300000, guid: 42aa075a8ef045841a3f69e771795168, type: 3}
+  sprite: {fileID: 21300000, guid: 83c0650141263574a8eb2c6e471aa90c, type: 3}
+  spawnSound: {fileID: 8300000, guid: 59ea8a331c007bb4695bfb154eda23b1, type: 3}

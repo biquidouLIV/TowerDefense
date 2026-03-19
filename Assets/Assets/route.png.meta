@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5829ce070d95afa46bbe95f24f2d1334
+guid: 95b50640832560041b99c0f93162df6f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8234456650487892713
-    second: ChapamziniBananini_0
+      213: 8041020389166738375
+    second: route_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChapamziniBananini_0
+      name: route_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 70
-        width: 766
-        height: 925
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ea0fa212baa64270800000000000000
-      internalID: 8234456650487892713
+      spriteID: 7cbe4f7d071779f60800000000000000
+      internalID: 8041020389166738375
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ChapamziniBananini_0: 8234456650487892713
+      route_0: 8041020389166738375
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
