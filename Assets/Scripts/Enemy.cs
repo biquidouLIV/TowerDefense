@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     
     
     [SerializeField] private Image _lifeBar;
+    [SerializeField] private GameObject coinPrefab;
     
     
     void Start()
@@ -92,6 +93,14 @@ public class Enemy : MonoBehaviour
             GameManager.instance.money += data.price;
         }
         EnemyManager.instance.allEnemyList.Remove(this);
+        
+        
+        int coins = Random.Range(3,6) * data.difficulty;
+        for (int i = 0; i < coins; i++)
+        {
+        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
+        
         Destroy(gameObject);
     }
 }

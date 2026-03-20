@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
                 [SerializeField] private GameObject pauseUI;
                 [SerializeField] private ParticleSystem firework;
                 [SerializeField] private Image[] AlliesImage = new Image[4];
+                public GameObject chest;
                 
               
         private List<EnemyData> Allies = new List<EnemyData>();     
@@ -40,6 +42,12 @@ public class GameManager : MonoBehaviour
         
         private void Update()
         {
+                if (Keyboard.current[Key.A].wasPressedThisFrame)
+                {
+                        baseTakeDamage(1);
+                }
+                
+                
                 if (EnemyManager.instance.allEnemyList.Count == 0 && _currentlyInWave && !waveIsSpawning)
                 {
                         _currentlyInWave = false;
@@ -163,7 +171,12 @@ public class GameManager : MonoBehaviour
                         SoundManager.instance.EndMusic();
                         waveIsSpawning = true;
                 }
-                
+
+                Camera.main.gameObject.transform.DOShakePosition(0.3f, new Vector3(1, 1, 0), 100, 10)
+                        .OnComplete((() =>
+                        {
+                                Camera.main.gameObject.transform.position = new Vector3(0, -0.3f, -10);
+                        }));
                 SoundManager.instance.RequestPlaySound(SoundManager.instance.baseDamageSound[Random.Range(0,SoundManager.instance.baseDamageSound.Length)]);
         }
 
