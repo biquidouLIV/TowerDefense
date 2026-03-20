@@ -9,32 +9,29 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Tower : MonoBehaviour
 {
-
-    
-    
-    [SerializeField] private TowerData[] towerDataList;
-    [SerializeField] private TowerType _type;
+   
+    [Header("Refs")]
+        [SerializeField] private TowerData[] towerDataList;
+        [SerializeField] private GameObject PlaceTowerUI;
+        [SerializeField] private GameObject UpgradeTowerUI;
+        [SerializeField] private TMP_Text damageUpgradeText;
+        [SerializeField] private TMP_Text rangeUpgradeText;
+        [SerializeField] private TMP_Text fireDelayUpgradeText;
+        [SerializeField] private TMP_Text sellValue;
+        [SerializeField] private SpriteRenderer _skin;
+        
+        
+    private TowerType _type;
     private TowerData _data;
     private Enemy _target;
     private float lastShotTime;
-
-    [SerializeField] private GameObject PlaceTowerUI;
-    [SerializeField] private GameObject UpgradeTowerUI;
-
-    [SerializeField] private TMP_Text damageUpgradeText;
-    [SerializeField] private TMP_Text rangeUpgradeText;
-    [SerializeField] private TMP_Text fireDelayUpgradeText;
-    [SerializeField] private TMP_Text sellValue;
+    private GameObject bulletPrefab;
     
-    [SerializeField] private SpriteRenderer _skin;
-     private GameObject bulletPrefab;
-
-
-     private float _range; 
-     private int _damage;
-     private float _fireDelay;
-     private int _value; 
-     private int _amoCost;
+    private float _range; 
+    private int _damage;
+    private float _fireDelay;
+    private int _value; 
+    private int _amoCost;
     
     private int _damageUpgradePrice;
     private int _rangeUpgradePrice;
@@ -90,7 +87,7 @@ public class Tower : MonoBehaviour
         damageUpgradeText.text = "damage "+_damageUpgradePrice +"€";
         rangeUpgradeText.text = "range "+_rangeUpgradePrice + "€";
         fireDelayUpgradeText.text = "fireDelay "+_fireDelayUpgradePrice + "€";
-        sellValue.text = "sell " +_value + "€";
+        sellValue.text = "sell " +_value/2 + "€";
 
         bulletPrefab = _data.bullet;
 
@@ -148,7 +145,7 @@ public class Tower : MonoBehaviour
 
         _rangeUpgradePrice += _rangeUpgradeAugmentation;
         rangeUpgradeText.text = "range "+_rangeUpgradePrice + "€";
-        sellValue.text = "sell " +_value + "€";
+        sellValue.text = "sell " +_value/2 + "€";
 
         if (_range >= _data.maxRange)
         {
@@ -177,7 +174,7 @@ public class Tower : MonoBehaviour
 
         _damageUpgradePrice += _damageUpgradeAugmentation;
         damageUpgradeText.text = "damage "+_damageUpgradePrice + "€";
-        sellValue.text = "sell " +_value +"€";
+        sellValue.text = "sell " +_value/2 +"€";
         
         if (_damage >= _data.maxDamage)
         {
@@ -209,7 +206,7 @@ public class Tower : MonoBehaviour
 
         _fireDelayUpgradePrice += _fireDelayUpgradeAugmentation;
         fireDelayUpgradeText.text = "fireDelay "+_fireDelayUpgradePrice+"€";
-        sellValue.text = "sell " +_value +"€";
+        sellValue.text = "sell " +_value/2 +"€";
         
         if (_fireDelay <= _data.minFireDelay)
         {
@@ -221,7 +218,7 @@ public class Tower : MonoBehaviour
 
     public void SellTower()
     {
-        GameManager.instance.money += _value;
+        GameManager.instance.money += _value/2;
         PlaceTower(0);
         UpgradeTowerUI.SetActive(false);
         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);

@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     private int _pv;
     private float _speed;
     private int _damage;
-
     private int _maxPv;
     
     private Vector3 _destination;
