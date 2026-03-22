@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         [Header("data")]
                 public int money;
                 [SerializeField] private int life = 20;
-                [SerializeField] private float _timeBetweenWaves = 5f;
+                [SerializeField] private float timeBetweenWaves = 5f;
         
         [Header("Refs")]
                 [SerializeField] private TMP_Text moneyText;
@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
                 [SerializeField] public GameObject gameOverScreen;
                 [SerializeField] private GameObject pauseUI;
                 [SerializeField] private ParticleSystem firework;
-                [SerializeField] private Image[] AlliesImage = new Image[4];
+                [SerializeField] private Image[] alliesImage = new Image[4];
                 public GameObject chest;
                 
               
-        private List<EnemyData> Allies = new List<EnemyData>();     
-        private int stealPrize;
-        public int _currentWave = 0;
+        private List<EnemyData> _allies = new List<EnemyData>();     
+        private int _stealPrize;
+        public int currentWave = 0;
         private int _waveScore = 5;
         private bool _currentlyInWave = false;
         public bool waveIsSpawning = false;
@@ -61,12 +61,12 @@ public class GameManager : MonoBehaviour
                 
                 moneyText.text = money + "€";
                 lifeText.text = life.ToString();
-                waveText.text = "wave " + _currentWave;
+                waveText.text = "wave " + currentWave;
 
                 if (EnemyManager.instance.allEnemyList.Count != 0)
                 {
-                      stealPrize = EnemyManager.instance.allEnemyList[0].data.stealPrice;
-                      stealText.text = "steal a Brainrot " + stealPrize + "€";  
+                      _stealPrize = EnemyManager.instance.allEnemyList[0].data.stealPrice;
+                      stealText.text = "steal a Brainrot " + _stealPrize + "€";  
                 }
                 else
                 {
@@ -82,57 +82,57 @@ public class GameManager : MonoBehaviour
 
         private IEnumerator StartWave()
         {
-                if (_currentWave != 0)
+                if (currentWave != 0)
                 {
                         firework.Play();          
                 }
 
                _currentlyInWave = true;
                AlliesIncome();
-               yield return new WaitForSeconds(_timeBetweenWaves);
+               yield return new WaitForSeconds(timeBetweenWaves);
                EnemyManager.instance.SpawnWave(_waveScore);
-               _currentWave++;
-               _waveScore = 5 + 5 * _currentWave;
+               currentWave++;
+               _waveScore = 5 + 5 * currentWave;
         }
 
 
         public void StealEnemy()
         {
-                if (money < stealPrize)
+                if (money < _stealPrize)
                 {
                         return;
                 }
                 
-                if (EnemyManager.instance.allEnemyList.Count == 0 || Allies.Count >= 4)
+                if (EnemyManager.instance.allEnemyList.Count == 0 || _allies.Count >= 4)
                 {
                         return;
                 }
                 
-                money -= stealPrize;
-                Allies.Add(EnemyManager.instance.allEnemyList[0].data);
+                money -= _stealPrize;
+                _allies.Add(EnemyManager.instance.allEnemyList[0].data);
                 EnemyManager.instance.allEnemyList[0].Die(false);
                 DisplayAllies();
         }
 
         private void DisplayAllies()
         {
-                foreach (var image in AlliesImage)
+                foreach (var image in alliesImage)
                 {
                         image.sprite = null;
                         image.gameObject.SetActive(false);
                 }
                 
-                for (int i = 0; i < Allies.Count; i++)
+                for (int i = 0; i < _allies.Count; i++)
                 {
-                        AlliesImage[i].sprite = Allies[i].sprite; 
-                        AlliesImage[i].gameObject.SetActive(true);
+                        alliesImage[i].sprite = _allies[i].sprite; 
+                        alliesImage[i].gameObject.SetActive(true);
                 }
         }
 
         private void AlliesIncome()
         {
                 List<EnemyData> escapes = new List<EnemyData>();
-                foreach (var ally in Allies)
+                foreach (var ally in _allies)
                 {
                         money += ally.income;
                         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)]);
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
 
                 foreach (var ally in escapes)
                 {
-                        Allies.Remove(ally);
+                        _allies.Remove(ally);
                 }
                 DisplayAllies();
                 

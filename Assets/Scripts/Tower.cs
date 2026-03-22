@@ -12,20 +12,20 @@ public class Tower : MonoBehaviour
    
     [Header("Refs")]
         [SerializeField] private TowerData[] towerDataList;
-        [SerializeField] private GameObject PlaceTowerUI;
-        [SerializeField] private GameObject UpgradeTowerUI;
+        [SerializeField] private GameObject placeTowerUI;
+        [SerializeField] private GameObject upgradeTowerUI;
         [SerializeField] private TMP_Text damageUpgradeText;
         [SerializeField] private TMP_Text rangeUpgradeText;
         [SerializeField] private TMP_Text fireDelayUpgradeText;
         [SerializeField] private TMP_Text sellValue;
-        [SerializeField] private SpriteRenderer _skin;
+        [SerializeField] private SpriteRenderer skin;
         
         
     private TowerType _type;
     private TowerData _data;
     private Enemy _target;
-    private float lastShotTime;
-    private GameObject bulletPrefab;
+    private float _lastShotTime;
+    private GameObject _bulletPrefab;
     
     private float _range; 
     private int _damage;
@@ -68,13 +68,13 @@ public class Tower : MonoBehaviour
         _range = _data.range;
         _damage = _data.damage;
         _fireDelay = _data.fireDelay;
-        PlaceTowerUI.SetActive(false); 
+        placeTowerUI.SetActive(false); 
         _damageUpgradePrice = _data.damageUpgradePrice;
         _rangeUpgradePrice = _data.rangeUpgradePrice;
         _fireDelayUpgradePrice = _data.fireDelayUpgradePrice;
         _value = _data.price;
         _amoCost = _data.amoCost;
-        _skin.sprite = _data.sprite;
+        skin.sprite = _data.sprite;
 
         _damageUpgrade = _data.damageUpgrade;
         _rangeUpgrade = _data.rangeUpgrade;
@@ -89,7 +89,7 @@ public class Tower : MonoBehaviour
         fireDelayUpgradeText.text = "fireDelay "+_fireDelayUpgradePrice + "€";
         sellValue.text = "sell " +_value/2 + "€";
 
-        bulletPrefab = _data.bullet;
+        _bulletPrefab = _data.bullet;
 
         if (_data.type != TowerType.empty)
         {
@@ -102,24 +102,24 @@ public class Tower : MonoBehaviour
     {
         if (_type == TowerType.empty)
         {
-            if (PlaceTowerUI.activeSelf)
+            if (placeTowerUI.activeSelf)
             {
-               PlaceTowerUI.SetActive(false); 
+               placeTowerUI.SetActive(false); 
             }
             else
             {
-                PlaceTowerUI.SetActive(true);
+                placeTowerUI.SetActive(true);
             }
         }
         else
         {
-            if (UpgradeTowerUI.activeSelf)
+            if (upgradeTowerUI.activeSelf)
             {
-                UpgradeTowerUI.SetActive(false); 
+                upgradeTowerUI.SetActive(false); 
             }
             else
             {
-                UpgradeTowerUI.SetActive(true);
+                upgradeTowerUI.SetActive(true);
             }
         }
     }
@@ -220,17 +220,17 @@ public class Tower : MonoBehaviour
     {
         GameManager.instance.money += _value/2;
         PlaceTower(0);
-        UpgradeTowerUI.SetActive(false);
+        upgradeTowerUI.SetActive(false);
         SoundManager.instance.RequestPlaySound(SoundManager.instance.moneySound[Random.Range(0,SoundManager.instance.moneySound.Length)], 0.3f);
     }
     
     private void Update()
     {
-        if (Time.time - _fireDelay > lastShotTime)
+        if (Time.time - _fireDelay > _lastShotTime)
         {
             FindTarget();
             Shoot();
-            lastShotTime = Time.time;
+            _lastShotTime = Time.time;
         }
 
         
@@ -243,7 +243,7 @@ public class Tower : MonoBehaviour
             float angle = Mathf.Acos(Vector3.Dot(Vector3.up, direction)/direction.magnitude*Vector3.up.magnitude);
             angle = (angle * 180 / Mathf.PI + 270) + 90;
             
-            _skin.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+            skin.transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
         }
         
         
@@ -275,7 +275,7 @@ public class Tower : MonoBehaviour
             return;
         }
 
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.target = _target;
         bulletScript.damage = _damage;

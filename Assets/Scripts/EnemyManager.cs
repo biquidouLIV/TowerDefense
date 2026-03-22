@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
     
-
     public List<Enemy> allEnemyList = new List<Enemy>();
     public EnemyData[] enemyDataList;
     public Transform[] path;
@@ -15,10 +14,10 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject EnemyPrefab;
     [SerializeField] private GameObject EnemySpawn;
 
-    private List<EnemyData> levelOneEnemyList = new List<EnemyData>();
-    private List<EnemyData> levelTwoEnemyList = new List<EnemyData>();
-    private List<EnemyData> levelThreeEnemyList = new List<EnemyData>();
-    private List<EnemyData> levelFourEnemyList = new List<EnemyData>();
+    private List<EnemyData> _levelOneEnemyList = new List<EnemyData>();
+    private List<EnemyData> _levelTwoEnemyList = new List<EnemyData>();
+    private List<EnemyData> _levelThreeEnemyList = new List<EnemyData>();
+    private List<EnemyData> _levelFourEnemyList = new List<EnemyData>();
 
     [SerializeField] private float timeBetweenEnemies = 1.5f;
     
@@ -41,16 +40,16 @@ public class EnemyManager : MonoBehaviour
             switch (enemy.difficulty)
             {
                 case(1):
-                    levelOneEnemyList.Add(enemy);
+                    _levelOneEnemyList.Add(enemy);
                     break;
                 case(2):
-                    levelTwoEnemyList.Add(enemy);
+                    _levelTwoEnemyList.Add(enemy);
                     break;
                 case(3):
-                    levelThreeEnemyList.Add(enemy);
+                    _levelThreeEnemyList.Add(enemy);
                     break;
                 case(4):
-                    levelFourEnemyList.Add(enemy);
+                    _levelFourEnemyList.Add(enemy);
                     break;
             }
         }
@@ -65,19 +64,19 @@ public class EnemyManager : MonoBehaviour
             switch (_score)
             {
                 case(>40):
-                    wave.Push(levelFourEnemyList[Random.Range(0,levelFourEnemyList.Count)]);
+                    wave.Push(_levelFourEnemyList[Random.Range(0,_levelFourEnemyList.Count)]);
                     _score -= 4;
                     break;
                 case(>20):
-                    wave.Push(levelThreeEnemyList[Random.Range(0,levelThreeEnemyList.Count)]);
+                    wave.Push(_levelThreeEnemyList[Random.Range(0,_levelThreeEnemyList.Count)]);
                     _score -= 3;
                     break;
                case(>5):
-                   wave.Push(levelTwoEnemyList[Random.Range(0,levelTwoEnemyList.Count)]);
+                   wave.Push(_levelTwoEnemyList[Random.Range(0,_levelTwoEnemyList.Count)]);
                    _score -= 2;
                    break; 
                 default:
-                    wave.Push(levelOneEnemyList[Random.Range(0,levelOneEnemyList.Count)]);
+                    wave.Push(_levelOneEnemyList[Random.Range(0,_levelOneEnemyList.Count)]);
                     _score -= 1;
                     break;
             }
@@ -107,6 +106,8 @@ public class EnemyManager : MonoBehaviour
         Enemy enemyData = newEnemy.GetComponent<Enemy>();
         enemyData.data = enemyToSpawn;
     }
+
+
 }
 
 public enum EnemyType

@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioClip endMusic;
 
     [SerializeField] public AudioClip shootSound;
-    private bool playMusic = true;
+    private bool _playMusic = true;
     
     private void Awake()
     {
@@ -47,14 +47,14 @@ public class SoundManager : MonoBehaviour
 
     public void EndMusic()
     {
-        playMusic = false;
+        _playMusic = false;
         musicSource.Stop();
         RequestPlaySound(endMusic);
     }
     
     private void Update()
     {
-        if (!musicSource.isPlaying && playMusic)
+        if (!musicSource.isPlaying && _playMusic)
         {
             ChangeMusic(Random.Range(0,musics.Length));
         }

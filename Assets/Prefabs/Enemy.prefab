@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   data: {fileID: 0}
-  _lifeBar: {fileID: 3631208784333350936}
+  lifeBar: {fileID: 3631208784333350936}
   coinPrefab: {fileID: 5412080644241002939, guid: 218227cca0158a3498f35bbde1e6442b, type: 3}
 --- !u!1 &3882446681121301791
 GameObject:

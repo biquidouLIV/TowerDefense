@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   money: 160
   life: 20
-  _timeBetweenWaves: 5
+  timeBetweenWaves: 5
   moneyText: {fileID: 12264132}
   lifeText: {fileID: 988332114}
   waveText: {fileID: 95626596}
@@ -1450,13 +1450,13 @@ MonoBehaviour:
   gameOverScreen: {fileID: 2072603064}
   pauseUI: {fileID: 714709856}
   firework: {fileID: 8501683175474336150}
-  AlliesImage:
+  alliesImage:
   - {fileID: 634933082}
   - {fileID: 1192937139}
   - {fileID: 421908107}
   - {fileID: 1261451746}
   chest: {fileID: 1733392865}
-  _currentWave: 0
+  currentWave: 0
   waveIsSpawning: 0
 --- !u!1001 &507425419
 PrefabInstance:
@@ -1466,38 +1466,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1570850433}
     m_Modifications:
-    - target: {fileID: 2851936565434937602, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2851936565434937602, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2851936565434937602, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2851936565434937602, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859707668047471946, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859707668047471946, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859707668047471946, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3859707668047471946, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5776134900632358397, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
       propertyPath: m_Name
       value: Tower (1)
@@ -1540,38 +1508,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112629551555099485, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421125086815679576, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421125086815679576, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421125086815679576, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421125086815679576, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8443153195321703009, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8443153195321703009, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8443153195321703009, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8443153195321703009, guid: e3c345db9abfdb142b27b04c1ee17143, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

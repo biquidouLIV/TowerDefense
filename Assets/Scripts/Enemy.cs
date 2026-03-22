@@ -18,14 +18,14 @@ public class Enemy : MonoBehaviour
     private Vector3 _direction;
     
     
-    [SerializeField] private Image _lifeBar;
+    [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject coinPrefab;
     
     
     void Start()
     {
         data = EnemyManager.instance.enemyDataList[(int)data.type];
-        _pv = data.pv + (int)(0.2 * GameManager.instance._currentWave * data.pv);
+        _pv = data.pv + (int)(0.2 * GameManager.instance.currentWave * data.pv);
         _maxPv = _pv;
         _speed = data.speed;
         _damage = data.damage;
@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
             Die(true);
         }
 
-        _lifeBar.fillAmount = ((float)_pv / (float)_maxPv);
+        lifeBar.fillAmount = ((float)_pv / (float)_maxPv);
     }
 
     public void Die(bool giveMoney)

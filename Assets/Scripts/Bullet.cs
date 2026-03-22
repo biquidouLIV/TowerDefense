@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     
     [SerializeField] private float speed = 0.01f;
     [SerializeField] private float hitDistance = 0.15f;
-    private Vector3 direction;
+    private Vector3 _direction;
     
 
 
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
         
-        direction = (target.transform.position - transform.position).normalized;
-        transform.Translate(direction * speed);
+        _direction = (target.transform.position - transform.position).normalized;
+        transform.Translate(_direction * speed);
     }
 }
